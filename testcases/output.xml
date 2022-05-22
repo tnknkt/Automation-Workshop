@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.10.2 on win32)" generated="20220522 14:26:23.622" rpa="false" schemaversion="3">
+<suite id="s1" name="Training Sat" source="D:\quiz\Automation Workshop\testcases\training_sat.robot">
+<test id="s1-t1" name="TC-01" line="8">
+<kw name="Open Amazon Web" library="common">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220522 14:26:23.832" level="INFO">Opening browser 'gc' to base url 'https://www.amazon.com/'.</msg>
+<status status="PASS" starttime="20220522 14:26:23.832" endtime="20220522 14:26:28.921"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:23.832" endtime="20220522 14:26:28.922"/>
+</kw>
+<kw name="Check popup" library="common">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait Until Element is visible</arg>
+<arg>//div[@class='a-section glow-toaster glow-toaster-theme-default glow-toaster-slot-default nav-coreFlyout nav-flyout']</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//div[@class='a-section glow-toaster glow-toaster-theme-default glow-toaster-slot-default nav-coreFlyout nav-flyout']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220522 14:26:28.925" endtime="20220522 14:26:29.045"/>
+</kw>
+<msg timestamp="20220522 14:26:29.045" level="INFO">${passed} = True</msg>
+<status status="PASS" starttime="20220522 14:26:28.925" endtime="20220522 14:26:29.045"/>
+</kw>
+<if>
+<branch type="IF" condition="${passed}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//input[@class="a-button-input" and @data-action-type='DISMISS']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:29.046" level="INFO">Clicking element 'xpath=//input[@class="a-button-input" and @data-action-type='DISMISS']'.</msg>
+<status status="PASS" starttime="20220522 14:26:29.045" endtime="20220522 14:26:29.137"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:29.045" endtime="20220522 14:26:29.137"/>
+</branch>
+<status status="PASS" starttime="20220522 14:26:29.045" endtime="20220522 14:26:29.137"/>
+</if>
+<status status="PASS" starttime="20220522 14:26:28.924" endtime="20220522 14:26:29.138"/>
+</kw>
+<kw name="Search product by Keywords" library="home_page">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_text}</arg>
+<arg>${product_list}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:29.140" level="INFO">Typing text 'Speaker' into text field 'id=twotabsearchtextbox'.</msg>
+<status status="PASS" starttime="20220522 14:26:29.139" endtime="20220522 14:26:29.326"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${search_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:29.327" level="INFO">Clicking element 'id=nav-search-submit-button'.</msg>
+<status status="PASS" starttime="20220522 14:26:29.326" endtime="20220522 14:26:33.901"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:29.138" endtime="20220522 14:26:33.901"/>
+</kw>
+<kw name="Log all product lists" library="search_page">
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>@{elementList}</var>
+<arg>//span[@class="a-size-medium a-color-base a-text-normal"]</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20220522 14:26:33.938" level="INFO">@{elementList} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="1a64e67c-3797-4574-97d4-0d2c1d27e8cb")&gt; | &lt;selenium.webdriver.remote.webelement.WebElement (ses...</msg>
+<status status="PASS" starttime="20220522 14:26:33.903" endtime="20220522 14:26:33.938"/>
+</kw>
+<for flavor="IN">
+<var>${i}</var>
+<value>@{elementList}</value>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="1a64e67c-3797-4574-97d4-0d2c1d27e8cb")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:33.964" level="INFO">${text} = TG117 BT Outdoor Speaker Waterproof Portable Wireless Column Loudspeaker Box with TF Card FM Radio</msg>
+<status status="PASS" starttime="20220522 14:26:33.938" endtime="20220522 14:26:33.964"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:33.965" endtime="20220522 14:26:33.965"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:33.938" endtime="20220522 14:26:33.966"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="f4cdad81-1e20-46bf-b0bf-c0a6f06be654")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:33.989" level="INFO">${text} = Portable Bluetooth Speaker, IPX7 Waterproof Wireless Speaker with Colorful Flashing Lights, 25W Super Bass with 24H Playtime, 100ft Bluetooth Range, TWS Pairing for Outdoor, Home, Party, Beach, Travel</msg>
+<status status="PASS" starttime="20220522 14:26:33.966" endtime="20220522 14:26:33.989"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:33.989" endtime="20220522 14:26:33.990"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:33.966" endtime="20220522 14:26:33.990"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="143884cb-dbc2-40cd-8095-b5fa065b0058")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.011" level="INFO">${text} = JBL Flip 4, Black - Waterproof, Portable &amp; Durable Bluetooth Speaker - Up to 12 Hours of Wireless Streaming - Includes Noise-Cancelling Speakerphone, Voice Assistant &amp; JBL Connect+</msg>
+<status status="PASS" starttime="20220522 14:26:33.991" endtime="20220522 14:26:34.011"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.011" endtime="20220522 14:26:34.012"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:33.990" endtime="20220522 14:26:34.012"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="154bfebf-4150-4168-b8d8-a13ebdb2c068")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.044" level="INFO">${text} = Sony LSPX-S2 Glass Sound Speaker with NFC and Bluetooth, 360 Degrees All Directional Speaker Silver</msg>
+<status status="PASS" starttime="20220522 14:26:34.013" endtime="20220522 14:26:34.044"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.044" endtime="20220522 14:26:34.045"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.012" endtime="20220522 14:26:34.045"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="73b70258-1302-4259-ac63-26a5044f5f8f")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.071" level="INFO">${text} = JBL Clip 3, River Teal - Waterproof, Durable &amp; Portable Bluetooth Speaker - Up to 10 Hours of Play - Includes Noise-Cancelling Speakerphone &amp; Wireless Streaming</msg>
+<status status="PASS" starttime="20220522 14:26:34.045" endtime="20220522 14:26:34.071"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.071" endtime="20220522 14:26:34.072"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.045" endtime="20220522 14:26:34.072"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="0fe34490-3790-4f0c-bc87-639893152d02")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.089" level="INFO">${text} = KNZ GoDuo Portable Bluetooth Speakers with Magnetic Connectable Base, L/R True Stereo Sound and Bass, Water and Shock Resistant, 18 hr playtime, Built-in Mic, Protective Carrying Case Included (Black)</msg>
+<status status="PASS" starttime="20220522 14:26:34.072" endtime="20220522 14:26:34.089"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.089" endtime="20220522 14:26:34.091"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.072" endtime="20220522 14:26:34.091"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="2d2cb97f-4f30-4385-9fb4-4e5d63c7dda4")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.112" level="INFO">${text} = Pyle Karaoke Vibe PA Bluetooth Audio Video/DVD Speaker System - 800W Multimedia CD/DVD Player for TV, Projectors, w/FM, USB, MIC, AUX, HDMI, RCA Inputs, Echo &amp; LED Mode, w/Remote Control - PKRK270BT</msg>
+<status status="PASS" starttime="20220522 14:26:34.093" endtime="20220522 14:26:34.112"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.112" endtime="20220522 14:26:34.113"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.092" endtime="20220522 14:26:34.113"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="8aa0c2b4-9ad8-4620-915e-591bc098732c")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.136" level="INFO">${text} = IPX7 Waterproof Speaker, DuoTen Portable Bluetooth 5.0 Wireless Speaker with 24 Hours 2800mAh 20W RGB Lights 360° Surround Sound TWS with Mic AUX Micro SD for Outdoors, Travel, Home, Party &amp; Shower</msg>
+<status status="PASS" starttime="20220522 14:26:34.113" endtime="20220522 14:26:34.136"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.137" endtime="20220522 14:26:34.138"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.113" endtime="20220522 14:26:34.138"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="18c44073-f34c-4e38-9238-c3273b453e81")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.156" level="INFO">${text} = OontZ Angle 3 Bluetooth Speaker | Portable Bluetooth Speakers | Powerful 10 Watt Output | 100 Foot Wireless Bluetooth Range | 14 Hours Battery Life | Water Resistant (IPX5)</msg>
+<status status="PASS" starttime="20220522 14:26:34.138" endtime="20220522 14:26:34.156"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.157" endtime="20220522 14:26:34.158"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.138" endtime="20220522 14:26:34.158"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="4fcbccc8-6bbb-4227-8306-b9b5c0e90b7b")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.194" level="INFO">${text} = EDUPLINK Portable Bluetooth Speaker Waterproof IPX7 Wireless Speaker with 20W Louder Speakers Switch Between Bluetooth Pairing and Aux-in Mode by Phone Button Black</msg>
+<status status="PASS" starttime="20220522 14:26:34.159" endtime="20220522 14:26:34.194"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.194" endtime="20220522 14:26:34.195"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.159" endtime="20220522 14:26:34.195"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="665b72ef-d4e0-406f-aeb3-2fc5b880da99")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.231" level="INFO">${text} = JBL FLIP 5, Waterproof Portable Bluetooth Speaker, White</msg>
+<status status="PASS" starttime="20220522 14:26:34.196" endtime="20220522 14:26:34.231"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.231" endtime="20220522 14:26:34.232"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.196" endtime="20220522 14:26:34.232"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="688712fe-eb54-4810-b50f-df5c9ea9ccd6")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.246" level="INFO">${text} = Kuryakyn 2720 MTX Road Thunder Weather Resistant Motorcycle Sound Bar Plus: 300 Watt Handlebar Mounted Audio Speakers with Bluetooth, USB Power Charger, Satin Black</msg>
+<status status="PASS" starttime="20220522 14:26:34.233" endtime="20220522 14:26:34.246"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.246" endtime="20220522 14:26:34.247"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.232" endtime="20220522 14:26:34.247"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="e03634d9-b7f2-4853-8fce-9238cce0eba0")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.280" level="INFO">${text} = Dual Electronics LU43PB 3-Way High Performance Outdoor Indoor Speakers with Powerful Bass | Effortless Mounting Swivel Brackets | All Weather Resistance | Expansive Stereo Sound Coverage | Sold in Pai...</msg>
+<status status="PASS" starttime="20220522 14:26:34.248" endtime="20220522 14:26:34.281"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.281" endtime="20220522 14:26:34.283"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.248" endtime="20220522 14:26:34.283"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="a5a14fb5-1c97-4b4d-9262-15bf9e0c5f12")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.312" level="INFO">${text} = 60W (80W Peak) Portable Bluetooth Speaker with Double Subwoofer Heavy Bass, Bluetooth 5.0 Wireless 100ft Outdoor Speaker, Support FM Radio, LED Colorful Lights, Stereo Sound, for Home, Party, Travel</msg>
+<status status="PASS" starttime="20220522 14:26:34.284" endtime="20220522 14:26:34.312"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.313" endtime="20220522 14:26:34.314"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.283" endtime="20220522 14:26:34.314"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="da6987a4-0a21-45e6-865e-391204dd8abc")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.337" level="INFO">${text} = Portable Bluetooth Speaker, IPX7 Waterproof Wireless Speaker with Colorful Flashing Lights, 25W Super Bass with 24H Playtime, 100ft Bluetooth Range, TWS Pairing for Outdoor, Home, Party, Beach, Travel</msg>
+<status status="PASS" starttime="20220522 14:26:34.315" endtime="20220522 14:26:34.337"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.337" endtime="20220522 14:26:34.338"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.314" endtime="20220522 14:26:34.338"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="072ef8b4-c691-493b-bd95-a66f35e49bdc")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.360" level="INFO">${text} = Bose SoundLink Revolve+ (Series II) Portable Bluetooth Speaker - Wireless Water-Resistant Speaker with Long-Lasting Battery and Handle, Black</msg>
+<status status="PASS" starttime="20220522 14:26:34.339" endtime="20220522 14:26:34.360"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.360" endtime="20220522 14:26:34.362"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.339" endtime="20220522 14:26:34.363"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="54877a7c-c1c4-4572-925a-a6351cc33e13")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.380" level="INFO">${text} = Bose SoundLink Flex Bluetooth Portable Speaker, Wireless Waterproof Speaker for Outdoor Travel - Black</msg>
+<status status="PASS" starttime="20220522 14:26:34.364" endtime="20220522 14:26:34.380"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.380" endtime="20220522 14:26:34.381"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.364" endtime="20220522 14:26:34.381"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="9a77146d-5778-4ee0-9039-4614adf986c6")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.405" level="INFO">${text} = IPX7 Waterproof Bluetooth Speaker, 40W Portable Wireless Speaker, 32H Playtime, Stereo Loud Sound, Deep Bass, Outdoor Speaker with Handle, Bluetooth 5.0, Built-in Mic, Power Bank for Party,Pool,Beach</msg>
+<status status="PASS" starttime="20220522 14:26:34.382" endtime="20220522 14:26:34.405"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.405" endtime="20220522 14:26:34.406"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.382" endtime="20220522 14:26:34.406"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="a18166ce-fd5d-4a37-a904-03d532b9aaa9")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.424" level="INFO">${text} = JBL CHARGE 5 - Portable Bluetooth Speaker with IP67 Waterproof and USB Charge out - Black</msg>
+<status status="PASS" starttime="20220522 14:26:34.406" endtime="20220522 14:26:34.424"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.424" endtime="20220522 14:26:34.425"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.406" endtime="20220522 14:26:34.426"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="9684013f-c4f1-4082-bbed-bc29047a9bb2")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.441" level="INFO">${text} = ULTIMATE EARS WONDERBOOM 2, Portable Wireless Bluetooth Speaker, Big Bass 360 Sound, Waterproof / Dustproof IP67, Floatable, 100 Ft Range - Crushed Ice Grey, Single</msg>
+<status status="PASS" starttime="20220522 14:26:34.427" endtime="20220522 14:26:34.441"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.441" endtime="20220522 14:26:34.442"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.426" endtime="20220522 14:26:34.442"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="2d2e46ad-3f84-427a-b53e-5112fc265bf7")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.459" level="INFO">${text} = Bluetooth Speaker,MusiBaby Speakers,Outdoor, Portable,Waterproof,Wireless Speaker,Dual Pairing, Bluetooth 5.0,Loud Stereo,Booming Bass,1500 Mins Playtime for Home,Party (Black, M68)</msg>
+<status status="PASS" starttime="20220522 14:26:34.442" endtime="20220522 14:26:34.459"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.459" endtime="20220522 14:26:34.462"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.442" endtime="20220522 14:26:34.462"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="67bbd6d6-7383-446c-a1ad-594e68ea0173")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.477" level="INFO">${text} = Fiodio IPX6 Waterproof Portable Speakers, Wireless Outdoor Travel Party Speaker, Built-in Microphone, USB for Sports, Beach, Hiking and Camping, black</msg>
+<status status="PASS" starttime="20220522 14:26:34.463" endtime="20220522 14:26:34.477"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.477" endtime="20220522 14:26:34.478"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.462" endtime="20220522 14:26:34.478"/>
+</iter>
+<iter>
+<var name="${i}">&lt;selenium.webdriver.remote.webelement.WebElement (session="5183be62dca97bad7fbe9d14dd51de2c", element="ba92d6d6-ca5a-4538-9105-c6f83406db82")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${i}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220522 14:26:34.498" level="INFO">${text} = Bluetooth Speaker,MusiBaby Speakers,Outdoor, Portable,Waterproof,Wireless Speaker,Dual Pairing, Bluetooth 5.0,Loud Stereo,Booming Bass,1500 Mins Playtime for Home,Party (Black, M68)</msg>
+<status status="PASS" starttime="20220522 14:26:34.478" endtime="20220522 14:26:34.498"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220522 14:26:34.498" endtime="20220522 14:26:34.499"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.478" endtime="20220522 14:26:34.499"/>
+</iter>
+<status status="PASS" starttime="20220522 14:26:33.938" endtime="20220522 14:26:34.499"/>
+</for>
+<status status="PASS" starttime="20220522 14:26:33.902" endtime="20220522 14:26:34.500"/>
+</kw>
+<kw name="Close Browser" library="common">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220522 14:26:34.500" endtime="20220522 14:26:36.760"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:34.500" endtime="20220522 14:26:36.760"/>
+</kw>
+<status status="PASS" starttime="20220522 14:26:23.831" endtime="20220522 14:26:36.761"/>
+</test>
+<status status="PASS" starttime="20220522 14:26:23.624" endtime="20220522 14:26:36.763"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Training Sat">Training Sat</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
